@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "pico/stdio.h"
 #include "pico/time.h"
 #include "Adafruit_NeoPixel.hpp"
@@ -7,7 +8,7 @@ void delay(uint32_t ms) {
 	sleep_ms(ms);
 };
 
-#define PIN 27
+#define PIN 1 //27
 
 // Parameter 1 = number of pixels in strip
 // Parameter 2 = Arduino pin number (most are valid)
@@ -18,7 +19,8 @@ void delay(uint32_t ms) {
 //   NEO_RGB     Pixels are wired for RGB bitstream (v1 FLORA pixels, not v2)
 //   NEO_RGBW    Pixels are wired for RGBW bitstream (NeoPixel RGBW products)
 
-Adafruit_NeoPixel strip = Adafruit_NeoPixel(60, PIN, NEO_GRB + NEO_KHZ800);
+Adafruit_NeoPixel strip = Adafruit_NeoPixel(50, PIN, NEO_RGB + NEO_KHZ800);
+// Adafruit_NeoPixel strip = Adafruit_NeoPixel(60, PIN, NEO_GRB + NEO_KHZ800);
 
 // IMPORTANT: To reduce NeoPixel burnout risk, add 1000 uF capacitor across
 // pixel power leads, add 300 - 500 Ohm resistor on first pixel's data input
@@ -38,6 +40,7 @@ uint32_t Wheel(uint8_t WheelPos);
 
 int main() {
 
+  stdio_init_all();
   strip.begin();
   strip.setBrightness(50);
   strip.show(); // Initialize all pixels to 'off'
@@ -46,18 +49,28 @@ int main() {
  while (1) {
 	 
   // Some example procedures showing how to display to the pixels:
- 
+  printf("colorWipe - red\n"); 
   colorWipe(strip.Color(255, 0, 0), 50); // Red
+  printf("colorWipe - green\n");
   colorWipe(strip.Color(0, 255, 0), 50); // Green
+  printf("colorWipe - blue\n");
   colorWipe(strip.Color(0, 0, 255), 50); // Blue
-//colorWipe(strip.Color(0, 0, 0, 255), 50); // White RGBW
+  printf("colorWipe - white\n");
+  colorWipe(strip.Color(127, 127, 127), 50); // White RGBW
   // Send a theater pixel chase in...
+  printf("theaterChase - white\n");
   theaterChase(strip.Color(127, 127, 127), 50); // White
+  printf("theaterChase - red\n");
   theaterChase(strip.Color(127, 0, 0), 50); // Red
+  printf("theaterChase - white\n");
+  theaterChase(strip.Color(127, 127, 127), 50); // white
+  printf("theaterChase - blue\n");
   theaterChase(strip.Color(0, 0, 127), 50); // Blue
-
+  printf("rainbow\n");
   rainbow(20);
+  printf("rainbowCycle\n");
   rainbowCycle(20);
+  printf("theaterChaseRainbow\n");
   theaterChaseRainbow(50);
 }
 };

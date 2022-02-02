@@ -13,5 +13,7 @@ add_subdirectory(brightness)
 add_subdirectory(simple)
 add_subdirectory(strandtest_wheel)
 add_subdirectory(onboard_cytron)
+add_subdirectory(icicles)
+add_subdirectory(xmasTree)
 add_subdirectory(../pico_neopixels build)
 
