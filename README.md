@@ -1,4 +1,4 @@
-# Adafruit NeoPixel Library for Pi PICO C/C++ SDK
+## Adafruit NeoPixel Library for Pi PICO C/C++ SDK
 
 Port of the Adafruit Library to PI PICO in a C/C++ SDK environment.
 Build according to SDK standards as an INTERFACE library
